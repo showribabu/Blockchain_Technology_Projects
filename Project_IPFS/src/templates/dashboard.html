@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Decentralised File Storage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Decentralised File Storage</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/dashboard">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
+    </nav>
+<br/> 
+<div class="container">
+  <h2>Upload File</h2>
+  <p>Upload File through Ethereum Blockchain Network</p>
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <form action="/uploadfile" method="post" enctype="multipart/form-data">
+        <div class="file-upload">
+            <div class="file-select">
+                <input type="file" name="chooseFile" id="chooseFile" required />
+            </div> <br/>
+            <button type="submit" class="btn btn-warning">Upload</button>
+        </div>
+    </form>
+    
+  </div>
+</div>
+<br/><br/>
+<div class="container">
+  <h2>My Files</h2>
+  <p>Following were the Files on-boarded in Blockchain Network</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>File Hash</th>
+        <th>Link to Open</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Add Dynamic Data Here -->
+      {%for i in range(num)%}
+        <tr>
+          <td>{{i+1}}</td>
+          <td>{{data[i][0]}}</td>
+          <td><a class="btn btn-danger" href="http://127.0.0.1:8080/ipfs/{{data[i][0]}}" target="_blank">Click Here</a></td>
+        </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>
